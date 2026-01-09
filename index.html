@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El Original Hernandez — Hot Dogs estilo California</title>
+  <meta name="description" content="Hot dogs estilo California — El Original Hernandez. Picantes, con todo, y listos para encender tus papilas. Pedidos a domicilio en Tecámac, México." />
+
+  <!-- Tip: Reemplaza las URLs de las imágenes de fondo hero y promo abajo en :root -->
+  <style>
+    :root{
+      --negro:#0b0b0b;
+      --negro-2:#121212;
+      --dorado:#d4af37;
+      --dorado-2:#b68f1a;
+      --rojo:#d7263d;
+      --rojo-2:#ff3b30;
+      --blanco:#f5f5f5;
+
+      /* Reemplaza estas dos con tus imágenes (la del banner y la del hot dog) */
+      --hero-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1600&auto=format&fit=crop'); /* Sustituye por tu banner de 3m x 1.65m */
+      --promo-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1600&auto=format&fit=crop'); /* Sustituye por tu hotdog picante */
+    }
+
+    /* Reset y tipografía */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--negro);color:var(--blanco);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+
+    /* Navegación */
+    .nav{
+      position:sticky;top:0;z-index:1000;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:linear-gradient(180deg, rgba(0,0,0,0.75), rgba(0,0,0,0.55));
+      border-bottom:1px solid rgba(212,175,55,0.25);
+    }
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:0.6px;
+      color:var(--dorado);
+    }
+    .brand-mark{
+      width:34px;height:34px;border:2px solid var(--dorado);border-radius:50%;
+      display:grid;place-items:center;position:relative;
+      box-shadow:0 0 18px rgba(212,175,55,0.3), inset 0 0 12px rgba(212,175,55,0.15);
+    }
+    .brand-mark::after{
+      content:'👑';font-size:16px;transform:translateY(1px);
+    }
+    .nav-links{display:flex;gap:18px;flex-wrap:wrap}
+    .nav-links a{
+      padding:8px 12px;border-radius:999px;border:1px solid transparent;
+      transition:all .25s ease;
+    }
+    .nav-links a:hover{
+      border-color:rgba(212,175,55,0.5);color:var(--dorado);
+      box-shadow:0 0 10px rgba(212,175,55,0.25);
+    }
+    .cta{
+      background:linear-gradient(90deg, var(--rojo), var(--rojo-2));
+      color:#fff;border:none;border-radius:999px;padding:8px 14px;font-weight:700;
+      box-shadow:0 8px 24px rgba(215,38,61,0.35);cursor:pointer;transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .cta:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(215,38,61,0.45)}
+
+    /* Hero */
+    .hero{
+      position:relative;min-height:68vh;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(1200px 500px at 75% 20%, rgba(212,175,55,0.12), transparent 55%),
+        radial-gradient(800px 400px at 25% 65%, rgba(215,38,61,0.10), transparent 60%),
+        var(--negro-2);
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;background:
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+        var(--hero-image);
+      background-size:cover;background-position:center;
+      filter:saturate(1.05) contrast(1.05);
+      opacity:0.25;
+    }
+    .hero-content{position:relative;text-align:center;padding:40px 20px;max-width:1000px}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid rgba(212,175,55,0.6);
+      border-radius:999px;color:var(--dorado);background:rgba(0,0,0,0.5);
+      box-shadow:0 0 12px rgba(212,175,55,0.25) inset, 0 0 18px rgba(212,175,55,0.15);
+      font-weight:700
+    }
+    .hero-title{
+      margin:18px auto 10px;font-size:clamp(32px,7vw,68px);line-height:1.05;font-weight:900;letter-spacing:0.5px;
+      text-shadow:0 2px 14px rgba(0,0,0,0.45);
+    }
+    .hero-title .brand-red{color:var(--rojo)}
+    .hero-sub{
+      max-width:800px;margin:0 auto 22px;color:#e9e9e9;
+      font-size:clamp(16px,2.4vw,20px)
+    }
+    .hero-kicker{
+      display:inline-flex;gap:12px;align-items:center;
+      padding:10px 16px;border-radius:12px;background:rgba(212,175,55,0.09);
+      border:1px dashed rgba(212,175,55,0.35);color:var(--dorado)
+    }
+
+    /* Sección — Promoción ardiente */
+    .promo{
+      position:relative;overflow:hidden;margin-top:-40px;
+    }
+    .promo-inner{
+      max-width:1100px;margin:0 auto;padding:28px 20px;border-radius:20px;
+      background:
+        linear-gradient(180deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02)),
+        radial-gradient(900px 220px at 50% 110%, rgba(215,38,61,0.09), transparent 60%),
+        #0f0f0f;
+      border:1px solid rgba(212,175,55,0.18);
+      box-shadow:0 20px 60px rgba(0,0,0,0.45), inset 0 0 80px rgba(212,175,55,0.06);
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px
+    }
+    @media (max-width:900px){.promo-inner{grid-template-columns:1fr}}
+    .promo-visual{
+      position:relative;border-radius:18px;overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.7)),
+        var(--promo-image);
+      background-size:cover;background-position:center;
+      min-height:280px;box-shadow:0 12px 40px rgba(215,38,61,0.2)
+    }
+    .flame{position:absolute;inset:auto 0 0 0;height:60%;pointer-events:none;
+      background:radial-gradient(120px 80px at 20% 80%, rgba(255,90,0,0.35), transparent 70%),
+                 radial-gradient(120px 80px at 80% 85%, rgba(255,30,0,0.35), transparent 70%);
+      mix-blend-mode:screen;filter:blur(6px)
+    }
+    .promo-copy{padding:10px 6px;display:flex;flex-direction:column;gap:10px}
+    .promo-eyebrow{color:var(--dorado);font-weight:800;letter-spacing:1px}
+    .promo-title{font-size:clamp(22px,4.8vw,36px);font-weight:900}
+    .promo-sub{color:#e3e3e3}
+    .promo-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+
+    /* Menú */
+    .section{max-width:1200px;margin:40px auto;padding:0 20px}
+    .section h2{font-size:clamp(24px,4.5vw,34px);margin:0 0 12px}
+    .section p.lead{color:#e6e6e6;margin:0 0 16px}
+
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+    .chip{
+      border:1px solid rgba(212,175,55,0.35);color:var(--dorado);background:rgba(0,0,0,0.4);
+      padding:8px 12px;border-radius:999px;cursor:pointer;transition:all .2s ease;font-weight:700
+    }
+    .chip.active{background:linear-gradient(90deg, rgba(212,175,55,0.25), rgba(212,175,55,0.15));box-shadow:0 0 14px rgba(212,175,55,0.25)}
+
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+    }
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      position:relative;border-radius:16px;overflow:hidden;background:#111;
+      border:1px solid rgba(212,175,55,0.18);box-shadow:0 14px 40px rgba(0,0,0,0.45);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(212,175,55,0.15)}
+    .card-media{
+      position:relative;height:180px;background:#1a1a1a;overflow:hidden
+    }
+    .card-media::after{
+      content:'';position:absolute;inset:0;background:
+        radial-gradient(220px 80px at 80% 20%, rgba(215,38,61,0.20), transparent 60%);
+      opacity:.8
+    }
+    .card-body{padding:12px}
+    .title{font-weight:900;font-size:18px}
+    .tags{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+    .tag{font-size:12px;color:#eee;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.28);padding:4px 8px;border-radius:999px}
+    .price{color:var(--dorado);font-weight:800;font-size:18px}
+    .actions{display:flex;gap:8px;margin-top:10px}
+    .btn{
+      padding:8px 12px;border-radius:10px;border:1px solid rgba(212,175,55,0.3);background:rgba(0,0,0,0.4);
+      color:#fff;font-weight:700;cursor:pointer;transition:all .2s ease
+    }
+    .btn:hover{border-color:rgba(212,175,55,0.6);color:var(--dorado)}
+    .btn.primary{background:linear-gradient(90deg, var(--rojo), var(--rojo-2));border:none}
+
+    /* Pedidos a domicilio */
+    .delivery{
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px;align-items:center
+    }
+    @media (max-width:900px){.delivery{grid-template-columns:1fr}}
+    .panel{
+      background:#101010;border:1px solid rgba(212,175,55,0.18);border-radius:16px;padding:16px;
+      box-shadow:0 12px 36px rgba(0,0,0,0.35)
+    }
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.steps{grid-template-columns:1fr}}
+    .step{background:#0f0f0f;border:1px dashed rgba(212,175,55,0.28);border-radius:12px;padding:12px}
+    .step strong{color:var(--dorado)}
+
+    /* Contacto y ubicación */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+    .contact-card{background:#0f0f0f;border:1px solid rgba(212,175,55,0.18);border-radius:16px;padding:16px}
+    .contact-list{display:grid;gap:10px}
+    .contact-item{display:flex;align-items:center;gap:12px}
+    .contact-item svg{width:20px;height:20px;color:var(--dorado)}
+    .map{
+      border-radius:14px;overflow:hidden;border:1px solid rgba(212,175,55,0.25);min-height:260px;background:#141414;
+      display:grid;place-items:center;color:#ccc
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:34px;padding:22px 20px;border-top:1px solid rgba(212,175,55,0.22);
+      background:linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.85))
+    }
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    .legal{color:#cfcfcf;font-size:12px}
+
+    /* Flotante de pedido rápido */
+    .floating-order{
+      position:fixed;right:18px;bottom:18px;z-index:999;background:linear-gradient(90deg, var(--rojo), var(--rojo-2));
+      color:#fff;font-weight:900;padding:12px 16px;border-radius:999px;box-shadow:0 14px 36px rgba(215,38,61,0.45);cursor:pointer;border:none
+    }
+
+    /* Micro animaciones */
+    .pulse{animation:pulse 2.6s infinite}
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(212,175,55,0.55)}
+      70%{box-shadow:0 0 0 14px rgba(212,175,55,0)}
+      100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}
+    }
+    .glow-red{box-shadow:0 0 22px rgba(215,38,61,0.35)}
+    .fade-in{animation:fadein .6s ease both}
+    @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>EL ORIGINAL HERNANDEZ</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#contacto">Contáctanos</a>
+        <a href="#pedidos">Pedidos a domicilio</a>
+      </nav>
+      <button class="cta pulse" onclick="abrirPedidoRapido()">Ordenar ahora</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">THE ONE AND ONLY • EL ORIGINAL</div>
+      <h1 class="hero-title">
+        <span style="color:var(--dorado)">HERNANDEZ</span> <span class="brand-red">Charly Fire</span> Hot Dogs
+      </h1>
+      <p class="hero-sub">
+        Hot dogs estilo California con el sello de la casa. Picor, textura y tradición — listos para encender tus papilas.
+      </p>
+      <div class="hero-kicker">RR • SANCHEZ • IN THE 777</div>
+    </div>
+  </section>
+
+  <!-- Promoción ardiente -->
+  <section class="promo" aria-label="Promoción ardiente">
+    <div class="promo-inner">
+      <div class="promo-visual">
+        <div class="flame" aria-hidden="true"></div>
+      </div>
+      <div class="promo-copy">
+        <div class="promo-eyebrow">IGNITE YOUR TASTE BUDS!</div>
+        <div class="promo-title">El picante que te hace volver</div>
+        <p class="promo-sub">
+          Inspirados en California, armados con jalapeños, cebolla, chips rojos triturados y el toque “Charly Fire”.
+          Prueba el original, prueba el que pone la barra más alta.
+        </p>
+        <div class="promo-cta">
+          <button class="btn primary glow-red" onclick="abrirPedidoRapido()">Pedir ahora</button>
+          <a href="#menu" class="btn">Ver menú</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menú -->
+  <section class="section" id="menu">
+    <h2>Menú — Estilo California</h2>
+    <p class="lead">Selecciona tu antojo y personaliza al vuelo. Filtros por picante, tamaño y extras.</p>
+
+    <div class="filters" role="group" aria-label="Filtros de menú">
+      <button class="chip active" data-filter="all">Todos</button>
+      <button class="chip" data-filter="picante">Picantes</button>
+      <button class="chip" data-filter="clasico">Clásicos</button>
+      <button class="chip" data-filter="extra">Con extra</button>
+      <button class="chip" data-filter="combo">Combos</button>
+    </div>
+
+    <div class="grid" id="menu-grid">
+      <!-- Cards del menú (puedes editar precios, descripciones y tags) -->
+      <article class="card" data-type="clasico">
+        <div class="card-media">
+          <!-- Puedes reemplazar por tu foto -->
+          <img alt="Hot dog clásico" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">California Clásico</div>
+          <div class="tags">
+            <span class="tag">Pan suave</span><span class="tag">Salchicha premium</span><span class="tag">Mostaza y catsup</span>
+          </div>
+          <div class="price">$69 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('California Clásico')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('California Clásico',69)">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-type="picante">
+        <div class="card-media">
+          <img alt="Charly Fire Picante" src="https://images.unsplash.com/photo-1543255006-c93b9a9710cd?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">Charly Fire Picante</div>
+          <div class="tags">
+            <span class="tag">Jalapeño</span><span class="tag">Cebolla</span><span class="tag">Chips rojos</span>
+          </div>
+          <div class="price">$79 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('Charly Fire Picante')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('Charly Fire Picante',79)">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-type="extra">
+        <div class="card-media">
+          <img alt="Dorado con queso" src="https://images.unsplash.com/photo-1612872088019-99d51e9a7f6f?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">Dorado con Queso</div>
+          <div class="tags">
+            <span class="tag">Queso derretido</span><span class="tag">Tocino</span><span class="tag">Crocante</span>
+          </div>
+          <div class="price">$89 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('Dorado con Queso')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('Dorado con Queso',89)">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-type="combo">
+        <div class="card-media">
+          <img alt="Combo California" src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">Combo California</div>
+          <div class="tags">
+            <span class="tag">Hot dog</span><span class="tag">Papas</span><span class="tag">Refresco</span>
+          </div>
+          <div class="price">$129 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('Combo California')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('Combo California',129)">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-type="clasico">
+        <div class="card-media">
+          <img alt="Clásico cebolla caramelizada" src="https://images.unsplash.com/photo-1554995207-83df8b0b4f65?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">Cebolla Caramelizada</div>
+          <div class="tags">
+            <span class="tag">Dulce-salado</span><span class="tag">Toque gourmet</span>
+          </div>
+          <div class="price">$74 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('Cebolla Caramelizada')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('Cebolla Caramelizada',74)">Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-type="picante">
+        <div class="card-media">
+          <img alt="Triple fuego" src="https://images.unsplash.com/photo-1585238342028-4bbc5b459eef?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;opacity:.85">
+        </div>
+        <div class="card-body">
+          <div class="title">Triple Fuego</div>
+          <div class="tags">
+            <span class="tag">Salsa habanero</span><span class="tag">Jalapeño</span><span class="tag">Chips rojos</span>
+          </div>
+          <div class="price">$95 MXN</div>
+          <div class="actions">
+            <button class="btn" onclick="personalizar('Triple Fuego')">Personalizar</button>
+            <button class="btn primary" onclick="agregarCarrito('Triple Fuego',95)">Agregar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pedidos a domicilio -->
+  <section class="section" id="pedidos">
+    <h2>Pedidos a domicilio</h2>
+    <p class="lead">Entrega en Tecámac y alrededores. Horario nocturno, perfecto para el antojo.</p>
+    <div class="delivery">
+      <div class="panel">
+        <div class="steps">
+          <div class="step">
+            <strong>1. Elige</strong>
+            <p>Selecciona tus hot dogs y extras favoritos desde el menú.</p>
+          </div>
+          <div class="step">
+            <strong>2. Confirma</strong>
+            <p>Comparte tu ubicación y método de pago por WhatsApp o Messenger.</p>
+          </div>
+          <div class="step">
+            <strong>3. Disfruta</strong>
+            <p>Llegamos con tu pedido caliente y cronometrado.</p>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn primary" onclick="abrirPedidoRapido()">Pedir por WhatsApp</button>
+          <button class="btn" onclick="abrirMessenger()">Pedir por Messenger</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="margin:0 0 10px;color:var(--dorado)">Cobertura</h3>
+        <p style="margin:0 0 12px">Tecámac, México, y zonas cercanas. Tarifas de envío variables según distancia.</p>
+        <div class="map">
+          <!-- Si lo deseas, incrusta un mapa de Google aquí reemplazando este bloque por un iframe -->
+          <div>
+            <div style="font-weight:800;color:var(--dorado);margin-bottom:6px">Ubicación</div>
+            <div>Estamos en Tecámac, México.</div>
+            <div style="opacity:.8;font-size:12px;margin-top:6px">Tip: pide tu referencia más cercana para entrega rápida.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section" id="contacto">
+    <h2>Contáctanos</h2>
+    <p class="lead">¿Dudas, sugerencias o pedidos grandes? Escríbenos directo en nuestras redes.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3 style="margin:0 0 10px;color:var(--dorado)">Datos de contacto</h3>
+        <div class="contact-list">
+          <div class="contact-item">
+            <!-- Teléfono -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2c-9.64-.77-15.04-6.17-15.82-15.82A2 2 0 0 1 6.99 4h3a2 2 0 0 1 2 1.72l.27 2a2 2 0 0 1-1.1 2.11l-1.2.6a16 16 0 0 0 7.2 7.2l.6-1.2a2 2 0 0 1 2.11-1.1l2 .27A2 2 0 0 1 22 16.92z" stroke-width="1.5"/></svg>
+            <span>Teléfono: <strong>55 0000 0000</strong> (reemplázalo por tu número)</span>
+          </div>
+          <div class="contact-item">
+            <!-- WhatsApp -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16.8 13.7c-.2-.1-1.2-.6-1.4-.7s-.3-.1-.5.1-.6.7-.7.9-.2.2-.4.1c-.2-.1-.9-.3-1.7-1-.6-.5-1-1.2-1.1-1.4s0-.3.1-.4l.3-.4c.1-.2.1-.3.1-.5s-.1-.4-.2-.6c-.1-.2-.5-1.2-.7-1.6s-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.7.7-.7 1.7s.7 2 1.1 2.4c.4.5 2.1 3.1 5.1 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.4-.3z" stroke-width="0.6"/><circle cx="12" cy="12" r="9.5" stroke-width="1.5"/></svg>
+            <span>WhatsApp: <strong>+52 55 0000 0000</strong> (linkea a tu wa.me)</span>
+          </div>
+          <div class="contact-item">
+            <!-- Messenger -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C6.48 2 2 6.02 2 10.98c0 2.75 1.41 5.2 3.68 6.83v3.19l3.36-1.84c.95.27 1.96.42 2.96.42 5.52 0 10-4.02 10-8.98S17.52 2 12 2z" stroke-width="1.5"/><path d="M6.5 13l4-3 2.5 2 4-3" stroke-width="1.5"/></svg>
+            <span>Messenger: <strong>@eloriginalhernandez</strong></span>
+          </div>
+          <div class="contact-item">
+            <!-- Facebook -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 3h-3a5 5 0 0 0-5 5v3H5v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z" stroke-width="1.5"/></svg>
+            <span>Facebook: <strong>/eloriginalhernandez</strong></span>
+          </div>
+          <div class="contact-item">
+            <!-- Instagram -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" stroke-width="1.2"/></svg>
+            <span>Instagram: <strong>@eloriginalhernandez</strong></span>
+          </div>
+          <div class="contact-item">
+            <!-- TikTok -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 3v4.5a6.5 6.5 0 0 0 6 0V11a7 7 0 0 1-6-2v6.5a4.5 4.5 0 1 1-4.5-4.5h.5" stroke-width="1.5"/></svg>
+            <span>TikTok: <strong>@eloriginalhernandez777</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3 style="margin:0 0 10px;color:var(--dorado)">Horarios</h3>
+        <p>Lunes a Domingo: 6:00 pm — 1:00 am</p>
+        <p style="opacity:.8">Eventos y pedidos grandes disponibles con 24h de anticipación.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>EL ORIGINAL HERNANDEZ</span>
+      </div>
+      <div class="legal">© 2026 El Original Hernandez — Hot Dogs estilo California. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante -->
+  <button class="floating-order" onclick="abrirPedidoRapido()">Ordenar por WhatsApp</button>
+
+  <script>
+    // Filtros del menú
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.card');
+    chips.forEach(ch => {
+      ch.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        ch.classList.add('active');
+        const type = ch.dataset.filter;
+        cards.forEach(card => {
+          card.style.display = (type === 'all' || card.dataset.type === type) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Carrito simple (demo)
+    const carrito = [];
+    function agregarCarrito(nombre, precio){
+      carrito.push({nombre, precio});
+      const total = carrito.reduce((acc, i) => acc + i.precio, 0);
+      alert(`Agregado: ${nombre}\nEn carrito: ${carrito.length} artículo(s)\nTotal: $${total} MXN`);
+    }
+
+    // Personalización (demo)
+    function personalizar(nombre){
+      const extras = prompt(`Personaliza tu "${nombre}":\nEscribe extras separados por coma (ej. jalapeño extra, queso, tocino)`);
+      if(extras){
+        alert(`Perfecto. Extras para "${nombre}": ${extras}`);
+      }
+    }
+
+    // Pedido rápido (WhatsApp): reemplaza el número abajo por el tuyo
+    function abrirPedidoRapido(){
+      const numero = '525500000000'; // Reemplaza con tu número en formato internacional sin '+'
+      const msg = encodeURIComponent('Hola, quiero pedir unos hot dogs estilo California 🍔🔥');
+      const url = `https://wa.me/${numero}?text=${msg}`;
+      window.open(url, '_blank');
+    }
+
+    // Messenger: reemplaza el usuario/ID si lo tienes
+    function abrirMessenger(){
+      const usuario = 'eloriginalhernandez';
+      const url = `https://m.me/${usuario}`;
+      window.open(url, '_blank');
+    }
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').replace('#','');
+        const el = document.getElementById(id);
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Parallax ligero en hero
+    window.addEventListener('scroll', ()=>{
+      const hero = document.querySelector('.hero');
+      const y = window.scrollY * 0.15;
+      hero.style.backgroundPosition = `center ${y}px`;
+    });
+  </script>
+</body>
+</html>
