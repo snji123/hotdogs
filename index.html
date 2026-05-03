@@ -83,6 +83,15 @@
       background:#111;border:2px solid rgba(212,175,55,0.35);border-radius:16px;overflow:hidden;
       box-shadow:0 14px 40px rgba(0,0,0,0.45);transition:transform .25s ease, box-shadow .25s ease
     }
+    .grid, .section {
+  overflow: hidden;
+  position: relative;
+}
+@media (min-width:900px){
+  .reveal { transform: translateY(120px); }
+}
+
+
     .card:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(212,175,55,0.18)}
     .card-media{position:relative;height:200px;background:#1a1a1a;overflow:hidden;border-bottom:2px solid rgba(212,175,55,0.35)}
     .card-media::after{
@@ -306,7 +315,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer reveal-right">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="brand">
         <img src="imagen.png" alt="Logo El Original Hernández">
@@ -350,7 +359,7 @@ function abrirMessenger(){
 
   reveals.forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
-    const elementVisible = 100;
+    const elementVisible = 150;
 
     if (elementTop < windowHeight - elementVisible) {
       el.classList.add('active');
