@@ -123,18 +123,43 @@
     .footer .brand img{height:28px;filter:drop-shadow(0 2px 8px rgba(212,175,55,0.35))}
     .legal{color:#cfcfcf;font-size:12px}
     /* Scroll Reveal */
+/* Base para todos */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-  visibility: hidden; /* mantiene el espacio en el layout */
+  transform: translateY(60px); /* más abajo para que no se note */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  visibility: hidden;
 }
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
 }
+/* Desde la derecha */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  visibility: hidden;
+}
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
 
+/* Desde la izquierda */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  visibility: hidden;
+}
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
 
 
   </style>
@@ -142,7 +167,7 @@
 <body>
 
   <!-- NAV -->
-  <header class="nav reveal">
+  <header class="nav reveal-left">
     <div class="nav-inner">
       <div class="logo"><img src="imagen.png" alt="Logo El Original Hernández"></div>
       <nav class="nav-links">
@@ -155,7 +180,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero reveal" id="inicio">
+  <section class="hero reveal-right" id="inicio">
     <div class="hero-content">
       <div class="hero-badge">THE ONE AND ONLY • EL ORIGINAL</div>
       <h1 class="hero-title">
@@ -170,7 +195,7 @@
   <h2>Menú</h2>
   <div class="grid">
     <!-- Hot Dog Pepperoni -->
-    <article class="card reveal">
+    <article class="card reveal-left">
       <div class="card-media" style="background-image:url('pepperoni.png');background-size:contain;background-position:top center;background-repeat:no-repeat;"></div>
       <div class="card-body">
         <div class="title">Hot Dog Pepperoni</div>
@@ -180,7 +205,7 @@
     </article>
 
     <!-- Hot Dog Hawaiano -->
-    <article class="card reveal">
+    <article class="card reveal-right">
       <div class="card-media" style="background-image:url('hawayano.png');background-size:contain;background-position:top center;background-repeat:no-repeat;"></div>
       <div class="card-body">
         <div class="title">Hot Dog Hawaiano</div>
@@ -200,7 +225,7 @@
     </article>
 
     <!-- Hot Dog Bistec -->
-    <article class="card reveal">
+    <article class="card reveal-left">
       <div class="card-media" style="background-image:url('vistec.png');background-size:contain;background-position:top center;background-repeat:no-repeat;"></div>
       <div class="card-body">
         <div class="title">Hot Dog Bistec</div>
@@ -210,7 +235,7 @@
     </article>
 
     <!-- Hot Dog Suadero -->
-    <article class="card reveal">
+    <article class="card reveal-right">
       <div class="card-media" style="background-image:url('suadero.png');background-size:contain;background-position:top center;background-repeat:no-repeat;"></div>
       <div class="card-body">
         <div class="title">Hot Dog Suadero</div>
@@ -269,7 +294,7 @@
   </section>
 
   <!-- PEDIDOS -->
-  <section class="section reveal" id="pedidos">
+  <section class="section reveal-left" id="pedidos">
     <h2>Pedidos</h2>
     <div class="panel">
       <p>Entrega en Ecatepec y alrededores. Elige tu canal preferido:</p>
@@ -281,7 +306,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer reveal-right">
     <div class="footer-inner">
       <div class="brand">
         <img src="imagen.png" alt="Logo El Original Hernández">
@@ -317,25 +342,27 @@ function abrirMessenger(){
     });
   </script>
 
-  <script>
-  function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    const windowHeight = window.innerHeight;
+<script>
+ function revealOnScroll() {
+  // Aquí ya no pongas reveal-bottom, usa reveal
+  const reveals = document.querySelectorAll('.reveal, .reveal-right, .reveal-left');
+  const windowHeight = window.innerHeight;
 
-    reveals.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      const elementVisible = 100; // margen de activación
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const elementVisible = 100;
 
-      if (elementTop < windowHeight - elementVisible) {
-        el.classList.add('active');
-      } else {
-        el.classList.remove('active');
-      }
-    });
-  }
+    if (elementTop < windowHeight - elementVisible) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
+    }
+  });
+}
 
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 </script>
+
 </body>
 </html>
