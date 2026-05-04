@@ -351,10 +351,24 @@
     // Pedido por Messenger
     
 function abrirMessenger(){
-  const url = 'fb-messenger://user-thread/61586943557943';
-  window.location.href = url;
-}
+  const appUrl = 'fb-messenger://user-thread/61586943557943';
+  const webUrl = 'https://www.facebook.com/messages/t/61586943557943';
 
+  const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (esMovil) {
+    // En celular intenta app
+    window.location.href = appUrl;
+
+    // fallback si no abre
+    setTimeout(() => {
+      window.open(webUrl, '_blank');
+    }, 800);
+  } else {
+    // En PC abre directo web (sin intento de app)
+    window.open(webUrl, '_blank');
+  }
+}
     // Scroll suave para los links
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
