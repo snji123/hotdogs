@@ -351,8 +351,8 @@
     // Pedido por Messenger
     
 function abrirMessenger(){
-  const url = 'https://www.facebook.com/profile.php?id=61586943557943';
-  window.open(url, '_blank');
+  const url = 'fb-messenger://user-thread/61586943557943';
+  window.location.href = url;
 }
 
     // Scroll suave para los links
