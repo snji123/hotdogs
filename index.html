@@ -222,6 +222,24 @@
 }
 
 
+.paquete-btn {
+  margin-top: 14px;
+  background: linear-gradient(90deg,var(--rojo),var(--rojo-2));
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.paquete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(212,175,55,0.45);
+}
+
+
 
   </style>
 </head>
@@ -324,6 +342,7 @@
     <div class="paquete-titulo">PAQUETE 1: EL ARRANQUE</div>
     <div class="paquete-detalle">20 personas / 40 hot dogs</div>
     <div class="paquete-precio">$3,200 MXN</div>
+    <button class="paquete-btn" onclick="pedidoPaquete(1)">Solicitar por WhatsApp</button>
   </div>
 
   <!-- Paquete 2 -->
@@ -332,6 +351,7 @@
     <div class="paquete-titulo">PAQUETE 2: LA FIESTA CALIFORNIA</div>
     <div class="paquete-detalle">50 personas / 75 hot dogs</div>
     <div class="paquete-precio">$6,000 MXN</div>
+    <button class="paquete-btn" onclick="pedidoPaquete(2)">Solicitar por WhatsApp</button>
   </div>
 
   <!-- Paquete 3 -->
@@ -340,8 +360,10 @@
     <div class="paquete-titulo">PAQUETE 3: LA LEYENDA</div>
     <div class="paquete-detalle">100 personas / 150 hot dogs</div>
     <div class="paquete-precio">$12,000 MXN</div>
+    <button class="paquete-btn" onclick="pedidoPaquete(3)">Solicitar por WhatsApp</button>
   </div>
 </section>
+
 
 
 
@@ -480,6 +502,28 @@ function abrirMessenger(){
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 </script>
+
+
+<script>
+function pedidoPaquete(num){
+  const numero = '525541104704'; // 52 (MX) + 5541104704
+  let msg = '';
+
+  if(num === 1){
+    msg = `🌭 Paquete 1 — “El Arranque”\n\nHola 👋\nMe gustaría solicitar información para agendar el Paquete 1: El Arranque 🌭🔥\nPara 20 personas / 40 hot dogs por $3,200.\n\n¿Podrían compartirme disponibilidad y detalles del servicio?\n¡Gracias!`;
+  }
+  if(num === 2){
+    msg = `🌴 Paquete 2 — “La Fiesta California”\n\nHola 👋\nEstoy interesado en agendar el Paquete 2: La Fiesta California 🌭🌴🔥\nPara 50 personas / 75 hot dogs por $6,000.\n\nMe gustaría conocer la disponibilidad y el proceso de contratación.\n¡Quedo atento, gracias!`;
+  }
+  if(num === 3){
+    msg = `🌋 Paquete 3 — “La Leyenda”\n\nHola 👋\nMe gustaría cotizar y agendar el Paquete 3: La Leyenda 🌭🌋🔥\nPara 100 personas / 150 hot dogs por $12,000.\n\n¿Podrían brindarme información sobre disponibilidad y reservación?\n¡Muchas gracias!`;
+  }
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+</script>
+
 
 </body>
 </html>
