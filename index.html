@@ -170,6 +170,58 @@
   visibility: visible;
 }
 
+/* Sección de Paquetes */
+.paquetes {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+@media (max-width:980px){ .paquetes{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .paquetes{grid-template-columns:1fr;} }
+
+.paquete-card {
+  background: #0f0f0f;
+  border: 2px solid var(--dorado);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+  text-align: center;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.paquete-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(215,38,61,0.35);
+}
+
+.paquete-eslogan {
+  color: var(--rojo);
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 8px rgba(215,38,61,0.6);
+}
+.paquete-titulo {
+  color: var(--dorado);
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.paquete-detalle {
+  color: #ddd;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.paquete-precio {
+  color: var(--dorado);
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 10px;
+}
+
+
 
   </style>
 </head>
@@ -209,7 +261,7 @@
       <div class="card-body">
         <div class="title">Hot Dog Pepperoni</div>
         <p>Pepperoni, queso, aderezos (kétchup, mostaza, mayonesa) y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$85 MXN</div>
       </div>
     </article>
 
@@ -219,7 +271,7 @@
       <div class="card-body">
         <div class="title">Hot Dog Hawaiano</div>
         <p>Piña, tocino, queso, aderezos (catsup, mostaza, mayonesa) y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$85 MXN</div>
       </div>
     </article>
 
@@ -229,7 +281,7 @@
       <div class="card-body">
         <div class="title">Hot Dog Especial</div>
         <p>Chile con carne (frijoles, carne molida, longaniza y salsa especial), aderezos y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$85 MXN</div>
       </div>
     </article>
 
@@ -239,7 +291,7 @@
       <div class="card-body">
         <div class="title">Hot Dog Bistec</div>
         <p>Bistec con queso mozzarella, aderezos (catsup, mostaza, mayonesa) y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$85 MXN</div>
       </div>
     </article>
 
@@ -249,7 +301,7 @@
       <div class="card-body">
         <div class="title">Hot Dog Suadero</div>
         <p>Suadero con guacamole, aderezos (catsup, mostaza, mayonesa) y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$90 MXN</div>
       </div>
     </article>
 
@@ -260,9 +312,36 @@
       <div class="card-body">
         <div class="title">papas locas</div>
         <p>carne molida, aderezos (catsup, mostaza, mayonesa) y cebolla caramelizada opcional.</p>
-        <div class="price">$XX MXN</div>
+        <div class="price">$XX(proximamente) MXN</div>
       </div>
     </article>
+
+
+    <section class="section paquetes" id="paquetes">
+  <!-- Paquete 1 -->
+  <div class="paquete-card reveal-left">
+    <div class="paquete-eslogan">LA CHISPA DE CALIFORNIA</div>
+    <div class="paquete-titulo">PAQUETE 1: EL ARRANQUE</div>
+    <div class="paquete-detalle">20 personas / 40 hot dogs</div>
+    <div class="paquete-precio">$3,200 MXN</div>
+  </div>
+
+  <!-- Paquete 2 -->
+  <div class="paquete-card reveal">
+    <div class="paquete-eslogan">EL CALOR DEL SUEÑO</div>
+    <div class="paquete-titulo">PAQUETE 2: LA FIESTA CALIFORNIA</div>
+    <div class="paquete-detalle">50 personas / 75 hot dogs</div>
+    <div class="paquete-precio">$6,000 MXN</div>
+  </div>
+
+  <!-- Paquete 3 -->
+  <div class="paquete-card reveal-right">
+    <div class="paquete-eslogan">EL VOLCÁN HERNÁNDEZ</div>
+    <div class="paquete-titulo">PAQUETE 3: LA LEYENDA</div>
+    <div class="paquete-detalle">100 personas / 150 hot dogs</div>
+    <div class="paquete-precio">$12,000 MXN</div>
+  </div>
+</section>
 
 
 
