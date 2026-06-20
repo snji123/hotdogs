@@ -58,12 +58,17 @@
     }
 
     /* HERO con fondo difuminado */
-    .hero{position:relative;text-align:center;padding:60px 20px;overflow:hidden;
-      background:
-        radial-gradient(1000px 450px at 75% 20%, rgba(212,175,55,0.12), transparent 55%),
-        radial-gradient(700px 350px at 25% 65%, rgba(215,38,61,0.10), transparent 60%),
-        var(--negro-2);
-    }
+    .hero {
+  position: relative;
+  text-align: center;
+  padding: 250px 20px 60px; /* arriba 120px, laterales 20px, abajo 60px */
+  overflow: hidden;
+  background:
+    radial-gradient(1000px 450px at 75% 20%, rgba(212,175,55,0.12), transparent 55%),
+    radial-gradient(700px 350px at 25% 65%, rgba(215,38,61,0.10), transparent 60%),
+    var(--negro-2);
+}
+
     .hero::before{
       content:'';position:absolute;inset:0;
       background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.85)),var(--hero-image);
