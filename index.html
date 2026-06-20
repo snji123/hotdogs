@@ -16,13 +16,22 @@
       --hero-image:url('imagen2.png');
     }
     *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--negro);color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,'Noto Sans',sans-serif}
+    html,body{margin:0;padding:0;background:var(--negro);color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,'Noto Sans',sans-serif;overflow-x: hidden; /* evita el hueco lateral */}
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
     button{font:inherit;cursor:pointer}
 
     /* NAV */
-    .nav{background:rgba(0,0,0,0.85);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(212,175,55,0.25)}
+    .nav {
+  background: rgba(0,0,0,0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+
     .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 14px}
     .logo img{height:40px;filter:drop-shadow(0 2px 8px rgba(212,175,55,0.35))}
     .nav-links{display:flex;gap:12px;flex-wrap:wrap}
